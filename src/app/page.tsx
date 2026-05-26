@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useLocale } from "@/hooks/useLocale";
 import { LangToggle } from "@/components/ui/LangToggle";
+import { Typography } from "@/components/ui/Typography";
 
 export default function Home() {
   const t = useLocale();
@@ -12,17 +13,17 @@ export default function Home() {
         <LangToggle />
       </div>
 
-      <div className="mb-4 text-xs font-mono tracking-[0.3em] text-f1-muted uppercase">
+      <Typography variant="tagline" as="div" className="mb-4">
         {t.home.tagline}
-      </div>
+      </Typography>
 
-      <h1 className="text-5xl font-bold tracking-tight text-f1-white mb-2">
+      <Typography variant="display" className="mb-2">
         F1 <span className="text-f1-red">Aero</span>Lab
-      </h1>
+      </Typography>
 
-      <p className="mt-4 max-w-md text-f1-muted text-base leading-relaxed">
+      <Typography variant="body" className="mt-4 max-w-md">
         {t.home.description}
-      </p>
+      </Typography>
 
       <Link
         href="/simulation"
