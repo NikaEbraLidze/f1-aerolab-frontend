@@ -62,6 +62,8 @@ const en = {
     weightTransfer: 'Weight Transfer',
     chartTitle: 'Performance Chart',
     launchCta: 'Launch Simulation',
+    connected: 'Connected',
+    disconnected: 'Disconnected',
   },
   presets: {
     title: 'Presets',

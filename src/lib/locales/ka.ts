@@ -64,6 +64,8 @@ const ka = {
     weightTransfer: 'წონის გადანაწილება',
     chartTitle: 'სიჩქარის გრაფიკი',
     launchCta: 'სიმულაციის გაშვება',
+    connected: 'დაკავშირებულია',
+    disconnected: 'გათიშულია',
   },
   presets: {
     title: 'პრეფსეტები',
