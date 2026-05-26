@@ -10,12 +10,32 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { useLocale } from '@/hooks/useLocale';
+import { useTheme } from '@/hooks/useTheme';
 import { useSimulationStore } from '@/store/simulationStore';
 import { Typography } from '@/components/ui/Typography';
 
+const CHART_COLORS = {
+  dark: {
+    grid: '#242424',
+    axis: '#242424',
+    tick: '#6b6b6b',
+    tooltipBg: '#141414',
+    tooltipBorder: '#242424',
+  },
+  light: {
+    grid: '#e0e0e0',
+    axis: '#e0e0e0',
+    tick: '#737373',
+    tooltipBg: '#ffffff',
+    tooltipBorder: '#e0e0e0',
+  },
+} as const;
+
 export function AeroChart() {
   const t = useLocale();
+  const { theme } = useTheme();
   const result = useSimulationStore((s) => s.result);
+  const colors = CHART_COLORS[theme];
 
   return (
     <div className="rounded-xl bg-f1-surface border border-f1-border p-6 flex flex-col gap-4">
@@ -28,32 +48,32 @@ export function AeroChart() {
             data={result?.chartData ?? []}
             margin={{ top: 4, right: 8, left: 0, bottom: 0 }}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="#242424" />
+            <CartesianGrid strokeDasharray="3 3" stroke={colors.grid} />
             <XAxis
               dataKey="speed"
-              tick={{ fill: '#6b6b6b', fontSize: 11 }}
+              tick={{ fill: colors.tick, fontSize: 11 }}
               tickLine={false}
-              axisLine={{ stroke: '#242424' }}
+              axisLine={{ stroke: colors.axis }}
             />
             <YAxis
-              tick={{ fill: '#6b6b6b', fontSize: 11 }}
+              tick={{ fill: colors.tick, fontSize: 11 }}
               tickLine={false}
-              axisLine={{ stroke: '#242424' }}
+              axisLine={{ stroke: colors.axis }}
               width={52}
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#141414',
-                border: '1px solid #242424',
+                backgroundColor: colors.tooltipBg,
+                border: `1px solid ${colors.tooltipBorder}`,
                 borderRadius: 8,
                 fontSize: 12,
               }}
-              labelStyle={{ color: '#6b6b6b', fontSize: 11 }}
+              labelStyle={{ color: colors.tick, fontSize: 11 }}
             />
             <Legend
               wrapperStyle={{ fontSize: 12, paddingTop: 8 }}
               formatter={(value) => (
-                <span style={{ color: '#6b6b6b' }}>{value}</span>
+                <span style={{ color: colors.tick }}>{value}</span>
               )}
             />
             <Line

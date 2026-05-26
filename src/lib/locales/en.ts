@@ -15,6 +15,13 @@ const en = {
     switchToEn: 'Switch to English',
     switchToKa: 'Switch to Georgian',
   },
+  theme: {
+    groupLabel: 'Theme',
+    dark: 'Dark',
+    light: 'Light',
+    switchToDark: 'Switch to dark mode',
+    switchToLight: 'Switch to light mode',
+  },
   home: {
     tagline: 'Formula 1 Engineering Playground',
     description:

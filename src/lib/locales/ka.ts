@@ -17,6 +17,13 @@ const ka = {
     switchToEn: 'ინგლისურზე გადართვა',
     switchToKa: 'ქართულზე გადართვა',
   },
+  theme: {
+    groupLabel: 'თემა',
+    dark: 'მუქი',
+    light: 'ღია',
+    switchToDark: 'მუქი რეჟიმზე გადართვა',
+    switchToLight: 'ღია რეჟიმზე გადართვა',
+  },
   home: {
     tagline: 'ფორმულა 1 საინჟინრო გარემო',
     description:
