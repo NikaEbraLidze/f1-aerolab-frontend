@@ -90,7 +90,6 @@ export default function Home() {
             description={t.home.nav.learn.description}
             cta={t.home.nav.learn.cta}
             href="/learn"
-            disabled
           />
           <NavCard
             icon="architecture"

@@ -35,7 +35,17 @@ export function Header() {
           >
             {t.nav.simulation}
           </Link>
-          <span className="text-sm text-f1-muted/40 select-none cursor-default">{t.nav.learn}</span>
+          <Link
+            href="/learn"
+            className={cn(
+              'text-sm transition-colors',
+              pathname === '/learn'
+                ? 'text-f1-white font-medium'
+                : 'text-f1-muted hover:text-f1-white',
+            )}
+          >
+            {t.nav.learn}
+          </Link>
           <span className="text-sm text-f1-muted/40 select-none cursor-default">{t.nav.build}</span>
         </nav>
 
@@ -72,7 +82,18 @@ export function Header() {
           >
             {t.nav.simulation}
           </Link>
-          <span className="text-sm text-f1-muted/40 select-none cursor-default">{t.nav.learn}</span>
+          <Link
+            href="/learn"
+            onClick={close}
+            className={cn(
+              'text-sm transition-colors',
+              pathname === '/learn'
+                ? 'text-f1-white font-medium'
+                : 'text-f1-muted hover:text-f1-white',
+            )}
+          >
+            {t.nav.learn}
+          </Link>
           <span className="text-sm text-f1-muted/40 select-none cursor-default">{t.nav.build}</span>
           <div className="pt-3 border-t border-f1-border">
             <LangToggle />
