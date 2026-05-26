@@ -1,10 +1,19 @@
+'use client';
 import Link from "next/link";
+import { useLocale } from "@/hooks/useLocale";
+import { LangToggle } from "@/components/ui/LangToggle";
 
 export default function Home() {
+  const t = useLocale();
+
   return (
-    <main className="flex flex-1 flex-col items-center justify-center min-h-screen px-6 text-center">
+    <main className="relative flex flex-1 flex-col items-center justify-center min-h-screen px-6 text-center">
+      <div className="absolute top-4 right-6">
+        <LangToggle />
+      </div>
+
       <div className="mb-4 text-xs font-mono tracking-[0.3em] text-f1-muted uppercase">
-        Formula 1 Engineering Playground
+        {t.home.tagline}
       </div>
 
       <h1 className="text-5xl font-bold tracking-tight text-f1-white mb-2">
@@ -12,15 +21,14 @@ export default function Home() {
       </h1>
 
       <p className="mt-4 max-w-md text-f1-muted text-base leading-relaxed">
-        Adjust car parameters in real time and see how aerodynamic forces
-        respond — downforce, drag, grip, and efficiency, live via WebSocket.
+        {t.home.description}
       </p>
 
       <Link
         href="/simulation"
         className="mt-10 inline-flex items-center gap-2 rounded-full bg-f1-red px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-f1-red-dark"
       >
-        Launch Simulation
+        {t.home.cta}
       </Link>
     </main>
   );
