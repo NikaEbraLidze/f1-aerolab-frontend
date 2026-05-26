@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useLocale } from "@/hooks/useLocale";
 import { LangToggle } from "@/components/ui/LangToggle";
 import { Typography } from "@/components/ui/Typography";
+import { Button } from "@/components/ui/Button";
 
 export default function Home() {
   const t = useLocale();
@@ -25,12 +26,9 @@ export default function Home() {
         {t.home.description}
       </Typography>
 
-      <Link
-        href="/simulation"
-        className="mt-10 inline-flex items-center gap-2 rounded-full bg-f1-red px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-f1-red-dark"
-      >
+      <Button as={Link} href="/simulation" className="mt-10">
         {t.home.cta}
-      </Link>
+      </Button>
     </main>
   );
 }
