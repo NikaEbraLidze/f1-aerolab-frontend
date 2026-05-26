@@ -2,9 +2,20 @@ import type { Locale } from './en';
 
 const ka = {
   nav: {
+    home: 'მთავარი',
     simulation: 'სიმულაცია',
     learn: 'სწავლა',
     build: 'არქიტექტურა',
+    mainLabel: 'მთავარი მენიუ',
+    openMenu: 'მენიუს გახსნა',
+    closeMenu: 'მენიუს დახურვა',
+  },
+  lang: {
+    groupLabel: 'ენა',
+    en: 'EN',
+    ka: 'KA',
+    switchToEn: 'ინგლისურზე გადართვა',
+    switchToKa: 'ქართულზე გადართვა',
   },
   home: {
     tagline: 'ფორმულა 1 საინჟინრო გარემო',

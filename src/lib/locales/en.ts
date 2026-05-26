@@ -1,8 +1,19 @@
 const en = {
   nav: {
+    home: 'Home',
     simulation: 'Simulation',
     learn: 'Learn',
     build: 'Build',
+    mainLabel: 'Main navigation',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+  },
+  lang: {
+    groupLabel: 'Language',
+    en: 'EN',
+    ka: 'KA',
+    switchToEn: 'Switch to English',
+    switchToKa: 'Switch to Georgian',
   },
   home: {
     tagline: 'Formula 1 Engineering Playground',
