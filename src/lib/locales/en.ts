@@ -43,7 +43,7 @@ const en = {
       build: {
         title: 'Architecture',
         description: 'Explore the NestJS backend, Socket.io gateway, Prisma schema and Next.js frontend.',
-        cta: 'Coming soon',
+        cta: 'View architecture',
       },
     },
   },
@@ -234,6 +234,230 @@ const en = {
     cta: {
       text: 'Ready to experiment? Open the simulator and watch these forces update live.',
       button: 'Launch Simulation',
+    },
+  },
+  build: {
+    tagline: 'Architecture',
+    title: 'Build',
+    intro:
+      'How F1 AeroLab is built — two repositories, a NestJS API with PostgreSQL, and a Next.js frontend connected via Socket.io in real time.',
+    overview: {
+      title: 'Project overview',
+      body:
+        'F1 AeroLab is an educational full-stack playground for Formula 1 aerodynamics. The backend was built first to define a stable API contract; the frontend consumes REST for presets and WebSocket for live simulation. Phase 1 (current) covers core simulation and preset storage — no auth, no AI yet.',
+    },
+    repos: {
+      sectionTitle: 'Repositories',
+      backend: {
+        title: 'f1-aerolab-backend',
+        description:
+          'NestJS API on port 3001. Owns aerodynamic calculations (AeroService), WebSocket gateway, REST endpoints, and Prisma persistence for car presets.',
+      },
+      frontend: {
+        title: 'f1-aerolab-frontend',
+        description:
+          'Next.js App Router UI on port 3000. Parameter sliders, live Recharts graphs, preset management, and localized Learn/Build documentation pages.',
+      },
+    },
+    dataFlow: {
+      title: 'Real-time data flow',
+      body:
+        'User moves a slider → useSimulation hook debounces and emits simulate:update via Socket.io → SimulationGateway validates the DTO and calls SimulationService → AeroService runs pure math → simulate:result is emitted back → Zustand store updates → StatCards and AeroChart re-render instantly.',
+    },
+    phases: {
+      sectionTitle: 'Development phases',
+      phase1: {
+        title: 'Phase 1 — Core simulation',
+        description:
+          'NestJS calculation engine, PostgreSQL + Prisma (Preset model), WebSocket gateway, REST API, Next.js simulation UI with sliders, charts, and preset CRUD. Current phase.',
+      },
+      phase2: {
+        title: 'Phase 2 — AI explanations',
+        description:
+          'OpenAI integration via AiModule in the backend. AI generates plain-English explanations when parameters change; responses stored per session. Frontend adds an explanation panel.',
+      },
+      phase3: {
+        title: 'Phase 3 — Full platform',
+        description:
+          'Learning and Build pages (this page), optional user accounts, 3D visualization groundwork, and expanded educational content.',
+      },
+    },
+    frontend: {
+      sectionTitle: 'Frontend stack',
+      nextjs: {
+        title: 'Next.js 16',
+        description: 'App Router framework — routing, layout, metadata, and static page generation.',
+      },
+      react: {
+        title: 'React 19',
+        description: 'UI library. Client components for interactive simulation; server layout for SEO metadata.',
+      },
+      typescript: {
+        title: 'TypeScript 5',
+        description: 'Strict typing across components, hooks, stores, and API response shapes.',
+      },
+      tailwind: {
+        title: 'Tailwind CSS 4',
+        description: 'Utility-first styling. Design tokens defined in globals.css via @theme — F1 brand palette and semantic chart colors.',
+      },
+      zustand: {
+        title: 'Zustand 5',
+        description: 'Lightweight global state for simulation params/results, presets list, and locale — no fetch logic inside stores.',
+      },
+      socketio: {
+        title: 'Socket.io-client',
+        description: 'WebSocket connection to the NestJS gateway for live simulate:update / simulate:result events.',
+      },
+      recharts: {
+        title: 'Recharts',
+        description: 'Speed–force performance chart with 41 data points (0–400 km/h). Dynamically imported to avoid SSR issues.',
+      },
+    },
+    backend: {
+      sectionTitle: 'Backend stack',
+      nestjs: {
+        title: 'NestJS 11',
+        description: 'Modular framework — controllers for REST, gateways for WebSocket, injectable services for business logic.',
+      },
+      prisma: {
+        title: 'Prisma ORM',
+        description: 'Type-safe database access, schema migrations, and generated client injected via global PrismaModule.',
+      },
+      postgresql: {
+        title: 'PostgreSQL',
+        description: 'Local relational database (f1_aerolab). No Docker — created manually via psql.',
+      },
+      socketio: {
+        title: 'Socket.io',
+        description: '@nestjs/websockets + @nestjs/platform-socket.io for real-time bidirectional simulation updates.',
+      },
+      validation: {
+        title: 'class-validator',
+        description: 'DTO validation on every HTTP body and WebSocket payload via global ValidationPipe.',
+      },
+      config: {
+        title: '@nestjs/config',
+        description: 'Environment variables — DATABASE_URL, CORS_ORIGIN, port configuration from .env.',
+      },
+      swagger: {
+        title: 'Swagger',
+        description: 'Auto-generated interactive API docs at /api/docs when the backend is running.',
+      },
+    },
+    modules: {
+      sectionTitle: 'Backend modules',
+      aero: {
+        title: 'AeroModule',
+        description: 'Pure aerodynamic math in AeroService — no DB, no side effects. Same input always produces the same output.',
+      },
+      simulation: {
+        title: 'SimulationModule',
+        description: 'SimulationGateway (WebSocket), SimulationController (REST /simulation/run), and SimulationService orchestration.',
+      },
+      presets: {
+        title: 'PresetsModule',
+        description: 'CRUD for saved car setups — PresetsController + PresetsService with Prisma queries.',
+      },
+      prisma: {
+        title: 'PrismaModule',
+        description: 'Global PrismaService client exported to all modules that need database access.',
+      },
+      health: {
+        title: 'HealthController',
+        description: 'GET /health — simple uptime check for monitoring and dev tooling.',
+      },
+    },
+    frontendArch: {
+      sectionTitle: 'Frontend architecture',
+      appRouter: {
+        title: 'App Router',
+        description: 'Routes in src/app/ — home, simulation, learn, build. Thin page components compose hooks and presentational cards.',
+      },
+      zustand: {
+        title: 'Zustand stores',
+        description: 'simulationStore (params, result, connection state), presetsStore, localeStore — data only, no side effects.',
+      },
+      hooks: {
+        title: 'Custom hooks',
+        description: 'useSimulation manages the socket lifecycle; usePresets handles REST CRUD; useLocale resolves en/ka strings.',
+      },
+      locales: {
+        title: 'Localization',
+        description: 'All UI text in src/lib/locales/en.ts and ka.ts. Type-safe Locale type ensures both files stay in sync.',
+      },
+      components: {
+        title: 'Component layers',
+        description: 'ui/ primitives, cards/ and forms/ for composition, shared/ for Header/Footer. Components render — hooks orchestrate.',
+      },
+    },
+    database: {
+      sectionTitle: 'Database schema',
+      intro:
+        'Phase 1 uses a minimal Prisma schema — a single Preset model for saved car configurations. Simulation results are computed on the fly and never persisted.',
+      id: { field: 'id', type: 'String', description: 'Primary key — cuid generated by Prisma' },
+      name: { field: 'name', type: 'String', description: 'User-defined preset label' },
+      speed: { field: 'speed', type: 'Float', description: 'Car speed in km/h (0–400)' },
+      wingAngle: { field: 'wingAngle', type: 'Float', description: 'Rear wing angle in degrees (0–30)' },
+      weight: { field: 'weight', type: 'Float', description: 'Car mass in kg (600–1000)' },
+      dragCoefficient: { field: 'dragCoefficient', type: 'Float', description: 'Drag coefficient Cd (0.1–2.0)' },
+      createdAt: { field: 'createdAt', type: 'DateTime', description: 'Auto-set on create' },
+      updatedAt: { field: 'updatedAt', type: 'DateTime', description: 'Auto-updated on save' },
+    },
+    rest: {
+      sectionTitle: 'REST API',
+      health: {
+        method: 'GET',
+        path: '/health',
+        description: 'Health check — returns server status.',
+      },
+      simulationRun: {
+        method: 'POST',
+        path: '/simulation/run',
+        description: 'One-shot aerodynamic calculation without WebSocket. Same result shape as simulate:result.',
+      },
+      presetsList: {
+        method: 'GET',
+        path: '/presets',
+        description: 'List all saved presets ordered by creation date.',
+      },
+      presetsCreate: {
+        method: 'POST',
+        path: '/presets',
+        description: 'Save a new preset with name and four car parameters.',
+      },
+      presetsGet: {
+        method: 'GET',
+        path: '/presets/:id',
+        description: 'Fetch a single preset by ID.',
+      },
+      presetsDelete: {
+        method: 'DELETE',
+        path: '/presets/:id',
+        description: 'Delete a preset permanently.',
+      },
+    },
+    websocket: {
+      sectionTitle: 'WebSocket events',
+      simulateUpdate: {
+        direction: 'Client → Server',
+        event: 'simulate:update',
+        description: 'Payload: { speed, wingAngle, weight, dragCoefficient }. Sent on every slider change.',
+      },
+      simulateResult: {
+        direction: 'Server → Client',
+        event: 'simulate:result',
+        description: 'Returns downforce, drag, lift, aeroEfficiency, grip, weightTransfer, and 41-point chartData.',
+      },
+      simulateError: {
+        direction: 'Server → Client',
+        event: 'simulate:error',
+        description: 'Validation or calculation error — { code, message, details }.',
+      },
+    },
+    cta: {
+      text: 'See the physics behind the numbers on the Learn page, or jump straight into the simulator.',
+      learnButton: 'Read Learn docs',
+      simButton: 'Launch Simulation',
     },
   },
 } as const;

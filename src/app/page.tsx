@@ -97,7 +97,6 @@ export default function Home() {
             description={t.home.nav.build.description}
             cta={t.home.nav.build.cta}
             href="/build"
-            disabled
           />
         </div>
       </section>

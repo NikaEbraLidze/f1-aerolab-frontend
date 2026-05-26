@@ -46,7 +46,17 @@ export function Header() {
           >
             {t.nav.learn}
           </Link>
-          <span className="text-sm text-f1-muted/40 select-none cursor-default">{t.nav.build}</span>
+          <Link
+            href="/build"
+            className={cn(
+              'text-sm transition-colors',
+              pathname === '/build'
+                ? 'text-f1-white font-medium'
+                : 'text-f1-muted hover:text-f1-white',
+            )}
+          >
+            {t.nav.build}
+          </Link>
         </nav>
 
         {/* Desktop lang toggle */}
@@ -94,7 +104,18 @@ export function Header() {
           >
             {t.nav.learn}
           </Link>
-          <span className="text-sm text-f1-muted/40 select-none cursor-default">{t.nav.build}</span>
+          <Link
+            href="/build"
+            onClick={close}
+            className={cn(
+              'text-sm transition-colors',
+              pathname === '/build'
+                ? 'text-f1-white font-medium'
+                : 'text-f1-muted hover:text-f1-white',
+            )}
+          >
+            {t.nav.build}
+          </Link>
           <div className="pt-3 border-t border-f1-border">
             <LangToggle />
           </div>
