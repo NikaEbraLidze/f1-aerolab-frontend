@@ -4,6 +4,7 @@ import { StoreProvider } from '@/providers/StoreProvider';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import { Header } from '@/components/shared/Header';
 import { Footer } from '@/components/shared/Footer';
+import { createPageMetadata, DEFAULT_TITLE } from '@/lib/seo/metadata';
 import './globals.css';
 
 const geistSans = Geist({
@@ -16,10 +17,13 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: 'F1 AeroLab',
-  description: 'Real-time Formula 1 aerodynamics simulation playground',
-};
+export const metadata: Metadata = createPageMetadata({
+  title: DEFAULT_TITLE,
+  description:
+    'Interactive Formula 1 aerodynamics playground. Tune wing angle, speed, weight and drag, then watch downforce, drag, grip and efficiency update live via WebSocket.',
+  path: '/',
+  titleAbsolute: true,
+});
 
 const themeScript = `
 (function () {
